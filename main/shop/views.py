@@ -25,5 +25,31 @@ class RoadtripView(CRUDView):
         RoadtripSerializers.Meta.depth = 0
         data = request.data
         wrappers = super().create(request, *args, **kwargs)
-        RoadtripSerializers.Meta.depth = 1
+        
+        return wrappers
+
+
+class ContactView(CRUDView):
+   
+    queryset = Contact.objects.all()
+    serializer_class=ContactSerializers
+
+    def post(self, request, *args, **kwargs):
+        ContactSerializers.Meta.depth = 0
+        data = request.data
+        wrappers = super().create(request, *args, **kwargs)
+        ContactSerializers.Meta.depth = 1
+        return wrappers
+
+class BookingView(CRUDView):
+   
+    queryset = Booking.objects.all()
+    serializer_class=BookingSerializers
+
+    def post(self, request, *args, **kwargs):
+        BookingSerializers.Meta.depth = 0
+        
+        data = request.data
+        wrappers = super().create(request, *args, **kwargs)
+        BookingSerializers.Meta.depth = 1
         return wrappers

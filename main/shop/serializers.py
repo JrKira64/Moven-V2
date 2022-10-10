@@ -6,3 +6,15 @@ class RoadtripSerializers(serializers.ModelSerializer):
         model = Roadtrip
         fields = "__all__"
         depth = 1
+
+class ContactSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Contact
+        fields = "__all__"
+        depth = 1
+
+class BookingSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Booking
+        fields = "__all__"
+        depth = 1
