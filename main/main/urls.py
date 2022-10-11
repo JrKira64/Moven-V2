@@ -20,6 +20,8 @@ from drf_yasg import openapi
 from django.contrib import admin
 from django.urls import path, include, re_path
 from django.conf import settings
+from rest_framework.authtoken.views import obtain_auth_token
+
 
 schema_view = get_schema_view(
    openapi.Info(
@@ -45,19 +47,8 @@ urlpatterns = [
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
+    path('api/login/',obtain_auth_token),
     path('api/',include('shop.urls')),
 
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 ]
-
-"""if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-    urlpatterns += [
-        re_path(r'^.*', TemplateView.as_view(template_name='index.html')),
-    ]
-
-if not settings.DEBUG:
-    urlpatterns +=[
-        re_path(r'^.*', TemplateView.as_view(template_name='index.html')),
-    ]"""

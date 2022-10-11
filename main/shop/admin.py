@@ -8,10 +8,16 @@ class RoadtripAdmin(admin.ModelAdmin):
     list_display = ("id","From","to")
 admin.site.register(Roadtrip,RoadtripAdmin)
 
-class BookingAdmin(admin.ModelAdmin):
-    list_display = ("id","created_at","contacted","roadtrip","contact")
-admin.site.register(Booking,BookingAdmin)
+class CartAdmin(admin.ModelAdmin):
+    list_display=("id","customer","complit","date")
+admin.site.register(Cart,CartAdmin)
 
-class ContactAdmin(admin.ModelAdmin):
-    list_display = ("id","name","email")
-admin.site.register(Contact,ContactAdmin)
+admin.site.register(CartBooking)
+
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ("id","prouser")
+admin.site.register(Profile,ProfileAdmin)
+
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ("id","cart","date","address","email", "mobile")
+admin.site.register(Order,OrderAdmin)
