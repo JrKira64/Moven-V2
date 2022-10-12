@@ -1,1 +1,1 @@
-web: gunicorn main.wsgi
+web gunicorn movan.wsgi:application --log-file -
